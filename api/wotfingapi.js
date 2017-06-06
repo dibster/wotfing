@@ -1,12 +1,9 @@
-const REST_OK = "200";
-const REST_ERROR = "400";
+"use strict";
+const restResponse = require("./modules/restReponse.js");
+const account = require("./modules/account.js");
 
-const simulator = require("./modules/simulator.js");
-
-var request = require("request");
-
-var bunyan = require("bunyan");
-var logger = bunyan.createLogger({
+const bunyan = require("bunyan");
+const logger = bunyan.createLogger({
 	name: "evrythng-seeder-api",
 	streams: [
 		{
@@ -20,10 +17,10 @@ var logger = bunyan.createLogger({
 	]
 });
 
-var express = require("express"); // call express
-var app = express(); // define our app using express
-var bodyParser = require("body-parser");
-var cors = require("cors");
+const express = require("express"); // call express
+const app = express(); // define our app using express
+const bodyParser = require("body-parser");
+const cors = require("cors");
 
 // allow CORS
 app.use(cors());
@@ -39,18 +36,10 @@ var port = process.env.PORT || 8080; // set our port
 startUp();
 
 // posts validate against a schema if it exists for the endpoint and type
-app.post("/simulator", function(req, res) {
+app.get("/account/login", function(req, res) {
 	logger.info(req.body);
-	let auth = req.get("authorization");
-	simulator.start(auth, req.body, logger);
-	res.status(REST_OK).json({ action: "simulator started" });
 });
 // posts validate against a schema if it exists for the endpoint and type
-app.post("/seeder", function(req, res) {
-	logger.info(req.body);
-	let auth = req.get("authorization");
-	res.status(REST_OK).json({ action: "seeder" });
-});
 
 // START THE SERVER
 // =============================================================================

@@ -1,10 +1,10 @@
 "use strict";
 
 //todo look at using the javascript object name for deletes / reads
-const utils = require("/users/dave/github/wotfing/api/modules/utils.js");
-const db = require("/users/dave/github/wotfing/api/dbutils/db.js");
+require("app-module-path").addPath("/users/dave/github/wotfing/api/modules");
 
-db.Empty();
+const utils = require("utils.js");
+const db = require("db.js");
 
 let user = {};
 
@@ -35,14 +35,41 @@ user.oldfings = [];
 
 user.categories = ["Food"];
 user.places = ["Freezer", "Fridge"];
+user.memberOf = [];
 
-db.Insert(user);
+db.Empty().then(r => {
+	console.log("Emptied :", r);
+	db
+		.CreateAccount({ email: "dave@evrythng.com", pwd: "asd" })
+		.then(res => {
+			console.log("Insert Promise Done");
+			db.Count().then(len => {
+				console.log("Number of Docs : ", len);
+				let userName = "dave@evrythng.com";
+				let pwd = "asd";
+				db
+					.Login({ email: userName, password: pwd })
+					.then(res => {
+						console.log("res from login : " + JSON.stringify(res));
+						db.List().then(res => {
+							//console.log("res : " + JSON.stringify(res));
+						});
+					})
+					.catch(err => {
+						console.log("err : " + JSON.stringify(err));
+					});
+			});
+		})
+		.catch(err => {
+			console.log("err on create account: " + JSON.stringify(err));
+		});
+});
 
-//db.List();
+db.CreateAccount({ email: "test@test.com", pwd: "qwepoi" }).then(res => {
+	console.log("created new user : " + JSON.stringify(res));
+	console.log("res.key : " + res.newUser.key);
 
-db.Count();
-
-let userName = "dave@evrythng.com";
-let pwd = "asd";
-
-db.userKey({ email: userName, password: pwd });
+	db.List().then(res => {
+		console.log("res : " + JSON.stringify(res));
+	});
+});
