@@ -15,28 +15,28 @@ before(function() {
 });
 
 describe("Database Tests", function() {
-	describe("Data Management", function() {
-		it("should add a new fing", function() {
+	describe("Image Management", function() {
+		it("Add A Fing", function() {
 			return db.AddFing(AccountKey, sampleFing()).then(res => {
 				assert.equal(1, res);
 			});
 		});
 
-		it("should read a fing", function() {
-			return db.GetFing(AccountKey, sampleFingId()).then(res => {
-				assert.equal("123", res.id);
-			});
-		});
-
-		it("should list all fings", function() {
-			return db.GetAllFings(AccountKey).then(res => {
-				assert.equal(1, res.length);
-			});
-		});
-
-		it("should delete a fing and send to archive", function() {
-			return db.RemoveFing(AccountKey, sampleFingId()).then(res => {
+		it("Thumbnail the Image", function() {
+			return db.Thumbnail(AccountKey, sampleFingId().id).then(res => {
 				assert.equal(0, res);
+			});
+		});
+
+		it("Add A Fing with bad image", function() {
+			return db.AddFing(AccountKey, missingImage()).then(res => {
+				assert.equal(1, res);
+			});
+		});
+
+		it("Not Find the Image", function() {
+			return db.Thumbnail(AccountKey, missingImage().id).then(res => {
+				assert.equal(99, res);
 			});
 		});
 
@@ -50,11 +50,22 @@ function sampleFing() {
 	return {
 		id: "123",
 		timestamp: 1234567890,
-		picUrl: "./pic.jpg",
+		picUrl: "20170517_165305.jpg",
 		thumb: "",
 		place: "Freezer"
 	};
 }
+
+function missingImage() {
+	return {
+		id: "1234",
+		timestamp: 1234567890,
+		picUrl: "20170517_16505.jpg",
+		thumb: "",
+		place: "Freezer"
+	};
+}
+
 function sampleFingId() {
 	return {
 		id: "123"
