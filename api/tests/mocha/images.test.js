@@ -7,10 +7,10 @@ let AccountKey = "";
 
 before(function() {
 	return db
-		.CreateAccount({ email: "test@test.com333", pwd: "qwepoi23" })
+		.CreateAccount({ email: "test@test.com333", password: "qwepoi23" })
 		.then(res => {
 			console.log("in start");
-			AccountKey = res.newUser.key;
+			AccountKey = res.key;
 		});
 });
 
@@ -18,7 +18,7 @@ describe("Database Tests", function() {
 	describe("Image Management", function() {
 		it("Add A Fing", function() {
 			return db.AddFing(AccountKey, sampleFing()).then(res => {
-				assert.equal(1, res);
+				assert.equal(123, res.id);
 			});
 		});
 
@@ -28,9 +28,21 @@ describe("Database Tests", function() {
 			});
 		});
 
+		it("make phone version of the Image", function() {
+			return db.Thumbnail(AccountKey, sampleFingId().id).then(res => {
+				assert.equal(0, res);
+			});
+		});
+
+		it("make web version", function() {
+			return db.Thumbnail(AccountKey, sampleFingId().id).then(res => {
+				assert.equal(0, res);
+			});
+		});
+
 		it("Add A Fing with bad image", function() {
 			return db.AddFing(AccountKey, missingImage()).then(res => {
-				assert.equal(1, res);
+				assert.equal(1234, res.id);
 			});
 		});
 

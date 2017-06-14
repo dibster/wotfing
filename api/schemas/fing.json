@@ -1,0 +1,41 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "object",
+    "title": "Fing",
+    "description": "Fing Creation Schema",
+    "properties": {
+        "id": {
+            "type": "string",
+            "title": "id",
+            "description": "Id of tag"
+        },
+        "timestamp": {
+            "type": "number",
+            "title": "Time",
+            "description": "timestamp"
+        },
+        "pic": {
+            "type": "string",
+            "title": "Picture",
+            "description": "picture"
+        },
+        "thumb": {
+            "type": "string",
+            "title": "Thumb",
+            "description": "Thumbnail"
+        },
+        "place": {
+            "type": "string",
+            "title": "Place",
+            "description": "Place"
+        },
+        "category": {
+            "type": "string",
+            "title": "Category",
+            "description": "Category"
+        }
+    },
+    "required": [
+        "id"
+    ]
+}

@@ -1,0 +1,25 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "object",
+    "title": "Account",
+    "description": "Account Creation Schema",
+    "properties": {
+        "email": {
+            "type": "string",
+            "title": "email",
+            "description": "Email Address",
+            "format": "email"
+        },
+        "password": {
+            "type": "string",
+            "title": "Password",
+            "minLength": 8,
+            "maxLength": 24,
+            "description": "Password"
+        }
+    },
+    "required": [
+        "email",
+        "password"
+    ]
+}

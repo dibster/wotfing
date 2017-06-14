@@ -7,10 +7,10 @@ let AccountKey = "";
 
 before(function() {
 	return db
-		.CreateAccount({ email: "test@test.com333", pwd: "qwepoi23" })
+		.CreateAccount({ email: "test@test.com333", password: "qwepoi23" })
 		.then(res => {
 			console.log("in start");
-			AccountKey = res.newUser.key;
+			AccountKey = res.key;
 		});
 });
 
@@ -18,7 +18,8 @@ describe("Database Tests", function() {
 	describe("Data Management", function() {
 		it("should add a new fing", function() {
 			return db.AddFing(AccountKey, sampleFing()).then(res => {
-				assert.equal(1, res);
+				assert.equal(sampleFingId().id, res.id);
+				assert.equal("number", typeof res.timestamp);
 			});
 		});
 

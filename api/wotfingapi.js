@@ -1,18 +1,19 @@
 "use strict";
-const restResponse = require("./modules/restReponse.js");
-const account = require("./modules/account.js");
+var status = require("statuses");
+const db = require("./modules/db");
+const validate = require("./modules/validate");
 
 const bunyan = require("bunyan");
 const logger = bunyan.createLogger({
-	name: "evrythng-seeder-api",
+	name: "wotfing-api",
 	streams: [
 		{
 			level: "info",
-			path: "./logs/proxy-info.log"
+			path: "./logs/wotfing-info.log"
 		},
 		{
 			level: "error",
-			path: "./logs/proxy-error.log" // log ERROR and above to a file.
+			path: "./logs/wotfing-error.log"
 		}
 	]
 });
@@ -35,12 +36,95 @@ var port = process.env.PORT || 8080; // set our port
 //
 startUp();
 
-// posts validate against a schema if it exists for the endpoint and type
+// account functions
 app.get("/account/login", function(req, res) {
 	logger.info(req.body);
-});
-// posts validate against a schema if it exists for the endpoint and type
+	console.log("req : " + JSON.stringify(req.body));
 
+	validate
+		.register(req.body)
+		.then(() => {
+			db
+				.Login(req.body)
+				.then(resp => {
+					res.status(status[200]).json(resp);
+				})
+				.catch(err => {
+					res.status(status[400]).json(err);
+				});
+		})
+		.catch(err => {
+			res.status(status[403]).json(err);
+		});
+});
+
+app.post("/account/register", function(req, res) {
+	logger.info(req.body);
+	console.log("req : " + JSON.stringify(req.body));
+
+	validate
+		.account(req.body)
+		.then(resp => {
+			console.log("Create");
+			db
+				.CreateAccount(req.body)
+				.then(resp => {
+					res.status(200).json(resp);
+				})
+				.catch(err => {
+					res.status(400).json(err);
+				});
+		})
+		.catch(err => {
+			res.status(403).json(err);
+		});
+});
+
+app.post("/account/login", function(req, res) {
+	logger.info(req.body);
+	console.log("req : " + JSON.stringify(req.body));
+
+	validate
+		.account(req.body)
+		.then(resp => {
+			console.log("Login");
+			db
+				.Login(req.body)
+				.then(resp => {
+					res.status(200).json(resp);
+				})
+				.catch(err => {
+					res.status(400).json(err);
+				});
+		})
+		.catch(err => {
+			res.status(403).json(err);
+		});
+});
+
+app.put("/fing", function(req, res) {
+	logger.info(req.body);
+	let auth = req.get("authorization");
+
+	console.log("req : " + auth);
+
+	validate
+		.fing(req.body)
+		.then(resp => {
+			console.log("New Fing");
+			db
+				.AddFing(auth, req.body)
+				.then(resp => {
+					res.status(200).json(resp);
+				})
+				.catch(err => {
+					res.status(400).json(err);
+				});
+		})
+		.catch(err => {
+			res.status(403).json(err);
+		});
+});
 // START THE SERVER
 // =============================================================================
 app.listen(port);

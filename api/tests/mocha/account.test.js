@@ -11,9 +11,9 @@ describe("Database Tests", function() {
 	describe("Account", function() {
 		it("should Create a New Account", function() {
 			return db
-				.CreateAccount({ email: "test@test.com", pwd: "qwepoi" })
+				.CreateAccount({ email: "test@test.com", password: "qwepoi" })
 				.then(res => {
-					assert.equal(64, res.newUser.key.length);
+					assert.equal(64, res.key.length);
 				});
 		});
 

@@ -40,6 +40,122 @@ function Find(parms) {
 	});
 }
 
+function AddFing(userKey, fing) {
+	return new Promise((res, rej) => {
+		users.find({ key: userKey }).exec(function(err, docs) {
+			if (err) {
+				rej(err);
+			}
+			let doc = docs[0];
+			fing.timestamp = utils.epochNow();
+			doc.fings.push(fing);
+			users.update({ key: userKey }, doc, function(err, numUpdated) {
+				res(fing);
+			});
+		});
+	});
+}
+
+function RemoveFing(userKey, fing) {
+	return new Promise((res, rej) => {
+		users.find({ key: userKey }).exec(function(err, docs) {
+			if (err) {
+				rej(err);
+			}
+			let doc = docs[0];
+			let archiveFing = {};
+			let newFings = doc.fings.filter(f => {
+				if (f.id === fing.id) {
+					archiveFing = f;
+				}
+				return fing.id !== f.id;
+			});
+			doc.fings = newFings;
+			doc.oldfings.push(archiveFing);
+			users.update({ key: userKey }, doc, function(err, numUpdated) {
+				res(doc.fings.length);
+			});
+		});
+	});
+}
+
+function GetFing(userKey, fing) {
+	return new Promise((res, rej) => {
+		users.find({ key: userKey }).exec(function(err, docs) {
+			if (err) {
+				rej(err);
+			}
+			let doc = docs[0];
+			let searchFings = doc.fings.filter(f => {
+				return fing.id === f.id;
+			});
+			let foundFing = searchFings[0];
+			res(foundFing);
+		});
+	});
+}
+
+function Thumbnail(userKey, fingId) {
+	return new Promise((res, rej) => {
+		users.find({ key: userKey }).exec(function(err, docs) {
+			if (err) {
+				rej(err);
+			}
+			let doc = docs[0];
+
+			let searchFings = doc.fings.filter(f => {
+				return fingId === f.id;
+			});
+
+			let foundFing = searchFings[0];
+
+			//TODO , run in parallel
+
+			// now thumbnail the image
+			utils
+				.thumbnail(foundFing.picUrl)
+				.then(resThumb => {
+					res(0);
+				})
+				.catch(err => {
+					res(99);
+				});
+
+			// now add web picture
+			utils
+				.webPicture(foundFing.picUrl)
+				.then(resThumb => {
+					res(0);
+				})
+				.catch(err => {
+					res(99);
+				});
+
+			// now add phone picture the image
+			utils
+				.phonePicture(foundFing.picUrl)
+				.then(resThumb => {
+					res(0);
+				})
+				.catch(err => {
+					res(99);
+				});
+		});
+	});
+}
+
+function GetAllFings(userKey) {
+	return new Promise((res, rej) => {
+		users.find({ key: userKey }).exec(function(err, docs) {
+			if (err) {
+				rej(err);
+			}
+			let allFings = docs[0].fings;
+			res(allFings);
+		});
+	});
+}
+
 function Count(parms) {
 	return new Promise((res, rej) => {
 		users.find({}).exec(function(err, docs) {
@@ -76,7 +192,8 @@ function Login(credentials) {
 			if (hashs.passwordHash === docs[0].hashpwd) {
 				resp.validUser = true;
 				resp.message = "User Validated";
-				resp.apiKey = docs[0].key;
+				resp.key = docs[0].key;
+				resp.fings = docs[0].fings;
 				res(resp);
 			} else {
 				resp.validUser = false;
@@ -91,14 +208,14 @@ function CreateAccount(credentials) {
 	return new Promise((res, rej) => {
 		// check if email exists
 		users.find({ email: credentials.email }).exec(function(err, docs) {
+			let resp = {};
 			if (docs.length > 0) {
 				resp.message = "User already Exists";
 				resp.created = false;
 				rej(resp);
 			}
-			let user = getUserTemplate(credentials.email, credentials.pwd);
+			let user = getUserTemplate(credentials.email, credentials.password);
 			users.insert(user, function(err, newDoc) {
-				let resp = {};
 				if (err) {
 					resp.message = err;
 					resp.created = false;
@@ -106,7 +223,7 @@ function CreateAccount(credentials) {
 				}
 				resp.message = "User Created";
 				resp.created = true;
-				resp.newUser = newDoc;
+				resp.key = newDoc.key;
 				res(resp);
 			});
 		});
@@ -116,12 +233,15 @@ function CreateAccount(credentials) {
 function getUserTemplate(email, pwd) {
 	let user = {};
 	user.email = email;
-	user.pwd = pwd;
+	// set API key
 	user.key = utils.uniqueKey();
+	// set password and salt
 	let pwdSalt = utils.saltHashPassword(pwd);
 	user.hashpwd = pwdSalt.passwordHash;
 	user.salt = pwdSalt.salt;
+	// base app data
 	user.fings = [];
+	user.Triggers = [];
 	user.oldfings = [];
 	user.categories = ["Food"];
 	user.places = ["Freezer", "Fridge"];
@@ -136,5 +256,10 @@ module.exports = {
 	Empty,
 	Count,
 	Login,
+	AddFing,
+	RemoveFing,
+	GetFing,
+	GetAllFings,
+	Thumbnail,
 	CreateAccount
 };

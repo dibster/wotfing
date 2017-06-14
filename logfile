@@ -1,0 +1,22 @@
+LOG:  database system was shut down at 2017-05-26 08:30:22 BST
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  relation "films" does not exist at character 15
+STATEMENT:  SELECT * FROM films
+ERROR:  relation "films" does not exist at character 15
+STATEMENT:  SELECT * FROM films
+ERROR:  relation "films" does not exist at character 15
+STATEMENT:  SELECT * FROM films
+ERROR:  relation "films" does not exist at character 15
+STATEMENT:  SELECT * FROM films
+ERROR:  relation "films" does not exist at character 15
+STATEMENT:  SELECT * FROM films
+ERROR:  relation "films" does not exist at character 15
+STATEMENT:  SELECT * FROM films
+ERROR:  relation "films" does not exist at character 15
+STATEMENT:  SELECT * FROM films
+ERROR:  relation "films" does not exist at character 15
+STATEMENT:  SELECT * FROM films
+FATAL:  lock file "postmaster.pid" already exists
+HINT:  Is another postmaster (PID 24477) running in data directory "/Users/dave/github/wotfing/db"?
