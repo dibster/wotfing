@@ -82,7 +82,6 @@ app.post("/account/register", function(req, res) {
 
 app.post("/account/login", function(req, res) {
 	logger.info(req.body);
-	console.log("req : " + JSON.stringify(req.body));
 
 	validate
 		.account(req.body)
@@ -102,12 +101,9 @@ app.post("/account/login", function(req, res) {
 		});
 });
 
-app.put("/fing", function(req, res) {
+app.put("/fings", function(req, res) {
 	logger.info(req.body);
 	let auth = req.get("authorization");
-
-	console.log("req : " + auth);
-
 	validate
 		.fing(req.body)
 		.then(resp => {
@@ -125,6 +121,23 @@ app.put("/fing", function(req, res) {
 			res.status(403).json(err);
 		});
 });
+
+app.get("/fings", function(req, res) {
+	logger.info(req.body);
+	let auth = req.get("authorization");
+	console.log("req : " + auth);
+	console.log("List Fings");
+	db
+		.GetAllFings(auth)
+		.then(resp => {
+			console.log("resp : " + JSON.stringify(resp));
+			res.status(200).json(resp);
+		})
+		.catch(err => {
+			res.status(400).json(err);
+		});
+});
+
 // START THE SERVER
 // =============================================================================
 app.listen(port);

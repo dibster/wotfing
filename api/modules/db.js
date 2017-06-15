@@ -95,6 +95,17 @@ function GetFing(userKey, fing) {
 	});
 }
 
+function GetAllFings(userKey) {
+	return new Promise((res, rej) => {
+		users.find({ key: userKey }).exec(function(err, docs) {
+			if (err) {
+				rej(err);
+			}
+			res(docs[0].fings);
+		});
+	});
+}
+
 function Thumbnail(userKey, fingId) {
 	return new Promise((res, rej) => {
 		users.find({ key: userKey }).exec(function(err, docs) {
