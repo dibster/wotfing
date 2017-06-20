@@ -1,6 +1,5 @@
 "use strict";
-require("app-module-path").addPath("/users/dave/github/wotfing/api/modules");
-const utils = require("utils.js");
+const utils = require("../modules/utils");
 
 const Datastore = require("nedb"),
 	users = new Datastore({ filename: "../database/users.db", autoload: true });

@@ -9,11 +9,11 @@ const logger = bunyan.createLogger({
 	streams: [
 		{
 			level: "info",
-			path: "./logs/wotfing-info.log"
+			path: "logs/wotfing-info.log"
 		},
 		{
 			level: "error",
-			path: "./logs/wotfing-error.log"
+			path: "logs/wotfing-error.log"
 		}
 	]
 });

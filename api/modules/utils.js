@@ -4,8 +4,8 @@ const ID_LEN = 16, KEY_LEN = 32;
 const crypto = require("crypto");
 const sharp = require("sharp");
 
-const imageSourceDirectory = "../../files/pictures/";
-const thumbnailTargetDirectory = "../../files/thumbnails/";
+const imageSourceDirectory = "../files/pictures/";
+const thumbnailTargetDirectory = "../files/thumbnails/";
 
 function uniqueId() {
 	return crypto.randomBytes(ID_LEN).toString("hex");
