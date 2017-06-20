@@ -112,7 +112,7 @@ app.post("/fings/:id/image", function(req, res) {
 	let sampleFile = req.files.sampleFile;
 	sampleFile.mv("./files/pictures/" + req.params.id + ".jpg", function(err) {
 		if (err) return res.status(500).send(err);
-		res.send("File uploaded!");
+		res.send({ status: 0 });
 	});
 });
 
@@ -137,6 +137,21 @@ app.put("/fings", function(req, res) {
 		});
 });
 
+app.get("/fings/:id", function(req, res) {
+	logger.info(req.body);
+	let auth = req.get("authorization");
+	console.log("GetFing : ", req.params.id);
+	db
+		.GetFing(auth, req.params.id)
+		.then(resp => {
+			console.log("resp : " + JSON.stringify(resp));
+			res.status(200).json(resp);
+		})
+		.catch(err => {
+			res.status(400).json(err);
+		});
+});
+
 app.get("/fings", function(req, res) {
 	logger.info(req.body);
 	let auth = req.get("authorization");
@@ -156,7 +171,7 @@ app.get("/fings", function(req, res) {
 // START THE SERVER
 // =============================================================================
 app.listen(port);
-console.log("schema api listening ... " + port);
+console.log("wotfing api listening ... " + port);
 
 // PASS READS / AND DELETES THROUGH
 // =============================================================================

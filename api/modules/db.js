@@ -81,15 +81,21 @@ function RemoveFing(userKey, fing) {
 function GetFing(userKey, fing) {
 	return new Promise((res, rej) => {
 		users.find({ key: userKey }).exec(function(err, docs) {
+			console.log("docs : " + docs.length);
 			if (err) {
 				rej(err);
 			}
-			let doc = docs[0];
-			let searchFings = doc.fings.filter(f => {
-				return fing.id === f.id;
-			});
-			let foundFing = searchFings[0];
-			res(foundFing);
+			if (docs.length === 0) {
+				console.log("docs.length : " + docs.length);
+				rej({ message: "User Key Invalid" });
+			} else {
+				let doc = docs[0];
+				let searchFings = doc.fings.filter(f => {
+					return fing.id === f.id;
+				});
+				let foundFing = searchFings[0];
+				res(foundFing);
+			}
 		});
 	});
 }
