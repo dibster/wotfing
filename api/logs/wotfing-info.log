@@ -161,3 +161,15 @@
 {"name":"wotfing-api","hostname":"Lauras-MacBook-Pro.local","pid":2229,"level":30,"email":"test7939590@test.com","password":"password36023170","msg":"","time":"2017-06-20T06:39:44.289Z","v":0}
 {"name":"wotfing-api","hostname":"Lauras-MacBook-Pro.local","pid":2229,"level":30,"id":"123","timestamp":1234567890,"picUrl":"./pic.jpg","thumb":"","place":"Freezer","msg":"","time":"2017-06-20T06:39:44.313Z","v":0}
 {"name":"wotfing-api","hostname":"Lauras-MacBook-Pro.local","pid":2229,"level":30,"msg":"","time":"2017-06-20T06:39:44.327Z","v":0}
+{"name":"wotfing-api","hostname":"lauras-mbp.mynet","pid":2905,"level":30,"email":"Dave@1dave.com","password":"123333lkj3A","msg":"","time":"2017-06-20T08:20:32.980Z","v":0}
+{"name":"wotfing-api","hostname":"lauras-mbp.mynet","pid":2909,"level":30,"email":"Dave@1dave.com","password":"123333lkj3A","msg":"","time":"2017-06-20T08:21:20.763Z","v":0}
+{"name":"wotfing-api","hostname":"lauras-mbp.mynet","pid":2913,"level":30,"email":"Dave@1dave.com","password":"123333lkj3A","msg":"","time":"2017-06-20T08:21:46.098Z","v":0}
+{"name":"wotfing-api","hostname":"lauras-mbp.mynet","pid":2927,"level":30,"email":"Dave@1dave.com","password":"123333lkj3A","msg":"","time":"2017-06-20T08:23:50.985Z","v":0}
+{"name":"wotfing-api","hostname":"lauras-mbp.mynet","pid":2931,"level":30,"email":"Dave@1dave.com","password":"123333lkj3A","msg":"","time":"2017-06-20T08:24:06.442Z","v":0}
+{"name":"wotfing-api","hostname":"lauras-mbp.mynet","pid":2931,"level":30,"email":"Dave@1dave.com","password":"123333lkj3A","msg":"","time":"2017-06-20T08:25:01.046Z","v":0}
+{"name":"wotfing-api","hostname":"lauras-mbp.mynet","pid":2931,"level":30,"email":"Dave@1dave.com","password":"123333lkj3A","msg":"","time":"2017-06-20T08:25:02.476Z","v":0}
+{"name":"wotfing-api","hostname":"lauras-mbp.mynet","pid":2931,"level":30,"email":"Dave@1dave.com","password":"123333lkj3A","msg":"","time":"2017-06-20T08:25:03.454Z","v":0}
+{"name":"wotfing-api","hostname":"lauras-mbp.mynet","pid":2943,"level":30,"msg":"","time":"2017-06-20T08:28:55.995Z","v":0}
+{"name":"wotfing-api","hostname":"lauras-mbp.mynet","pid":2943,"level":30,"msg":"","time":"2017-06-20T08:29:49.024Z","v":0}
+{"name":"wotfing-api","hostname":"lauras-mbp.mynet","pid":2961,"level":30,"msg":"","time":"2017-06-20T08:30:21.171Z","v":0}
+{"name":"wotfing-api","hostname":"lauras-mbp.mynet","pid":2966,"level":30,"msg":"","time":"2017-06-20T08:30:47.524Z","v":0}

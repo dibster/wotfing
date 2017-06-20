@@ -9,11 +9,11 @@ const logger = bunyan.createLogger({
 	streams: [
 		{
 			level: "info",
-			path: "logs/wotfing-info.log"
+			path: "./logs/wotfing-info.log"
 		},
 		{
 			level: "error",
-			path: "logs/wotfing-error.log"
+			path: "./logs/wotfing-error.log"
 		}
 	]
 });
@@ -23,8 +23,12 @@ const app = express(); // define our app using express
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
+// file upload
+const fileUpload = require("express-fileupload");
+
 // allow CORS
 app.use(cors());
+app.use(fileUpload());
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -99,6 +103,17 @@ app.post("/account/login", function(req, res) {
 		.catch(err => {
 			res.status(403).json(err);
 		});
+});
+
+app.post("/fings/:id/image", function(req, res) {
+	logger.info(req.body);
+	console.log("req.params.id : " + JSON.stringify(req.params.id));
+	if (!req.files) return res.status(400).send("No files were uploaded.");
+	let sampleFile = req.files.sampleFile;
+	sampleFile.mv("./files/pictures/" + req.params.id + ".jpg", function(err) {
+		if (err) return res.status(500).send(err);
+		res.send("File uploaded!");
+	});
 });
 
 app.put("/fings", function(req, res) {
