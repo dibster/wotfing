@@ -1,17 +1,20 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 
 // Material UI
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import RaisedButton from "material-ui/RaisedButton";
-
+// Wf Components
+import WfHeader from "./components/header/Header.js";
+// Test Data
+import { testLogin, testFings } from "./mocks/data.js";
+console.log(testLogin());
+console.log(testFings());
 class App extends Component {
 	render() {
 		return (
 			<MuiThemeProvider>
-				<div className="App">
-					<RaisedButton label="Default" />
+				<div>
+					<WfHeader />
 				</div>
 
 			</MuiThemeProvider>
