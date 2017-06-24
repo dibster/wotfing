@@ -2,7 +2,6 @@ import React from "react";
 import Dialog from "material-ui/Dialog";
 import FlatButton from "material-ui/FlatButton";
 import TextField from "material-ui/TextField";
-import RaisedButton from "material-ui/RaisedButton";
 
 /**
  * Dialog with action buttons. The actions are passed in as an array of React objects,
@@ -16,6 +15,11 @@ export default class Login extends React.Component {
 		emailerror: "",
 		passwordError: ""
 	};
+
+	componentDidMount(props) {
+		console.log("In Constructor");
+		this.setState({ open: true });
+	}
 
 	handleOpen = () => {
 		this.setState({ open: true });
@@ -58,7 +62,6 @@ export default class Login extends React.Component {
 
 		return (
 			<div>
-				<RaisedButton label="Login" onTouchTap={this.handleOpen} />
 				<Dialog
 					title="Sign In"
 					actions={actions}

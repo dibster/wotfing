@@ -32,7 +32,7 @@ const WfAppBar = () => (
 			iconElementLeft={<IconButton><IconMenu /></IconButton>}
 			iconElementRight={<FlatButton label="Login" />}
 		/>
-		<WfLogin />
+		<WfLogin name="dave" />
 	</div>
 );
 
