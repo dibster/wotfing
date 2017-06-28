@@ -16,9 +16,19 @@ export default class Login extends React.Component {
 		passwordError: ""
 	};
 
+	isLoggedIn = () => {
+		if (localStorage.getItem("wotfingUserKey")) return false;
+		else return false;
+	};
+
 	componentDidMount(props) {
-		console.log("In Constructor");
-		this.setState({ open: true });
+		this.setState({ showMessage: true });
+		this.setState({ registrationName: false });
+		if (this.isLoggedIn()) {
+			this.setState({ open: false });
+		} else {
+			this.setState({ open: true });
+		}
 	}
 
 	handleOpen = () => {
@@ -32,11 +42,19 @@ export default class Login extends React.Component {
 
 	handleLogin = () => {
 		this.setState({ open: false });
+		console.log("this.state : " + JSON.stringify(this.state));
+
+		//localStorage.setItem("wotfingUserKey", "XXXXYYY");
 		console.log("Login");
 	};
 
 	handleRegister = () => {
-		this.setState({ open: false });
+		if (this.state.registrationName) {
+			console.log("Create New User");
+			console.log("this.state : " + JSON.stringify(this.state));
+		}
+		this.setState({ open: true });
+		this.setState({ registrationName: true });
 		console.log("Register");
 	};
 
@@ -74,17 +92,41 @@ export default class Login extends React.Component {
 						floatingLabelText="Email Address"
 						errorText={this.state.emailerror}
 						floatingLabelFixed={true}
+						onChange={(e, newValue) => {
+							console.log("newValue : " + newValue);
+							console.log("isEmailValid() : " + isEmailValid(newValue));
+
+							this.setState({ emailaddress: newValue });
+						}}
 					/>
+					{this.state.showMessage && <div>{this.state.showMessage}</div>}
+
 					<br />
 					<TextField
 						hintText="Password Field"
 						floatingLabelText="Password"
 						errorText={this.state.passwordError}
 						type="password"
+						onChange={(e, newValue) => this.setState({ password: newValue })}
 					/>
 					<br />
+					{this.state.showMessage && <div>Cannot Log in</div>}
+					{this.state.registrationName &&
+						<div>
+							<TextField
+								hintText="Name"
+								floatingLabelText="Name"
+								onChange={(e, newValue) => this.setState({ name: newValue })}
+							/>
+						</div>}
+
 				</Dialog>
 			</div>
 		);
 	}
+}
+
+function isEmailValid(str) {
+	const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	return regex.test(str);
 }
