@@ -5,10 +5,7 @@ import "./App.css";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 // Wf Components
 import WfHeader from "./components/header/Header.js";
-// Test Data
-import { testLogin, testFings } from "./mocks/data.js";
-console.log(testLogin());
-console.log(testFings());
+
 class App extends Component {
 	render() {
 		return (
@@ -16,7 +13,6 @@ class App extends Component {
 				<div>
 					<WfHeader />
 				</div>
-
 			</MuiThemeProvider>
 		);
 	}
