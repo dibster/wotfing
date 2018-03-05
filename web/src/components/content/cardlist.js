@@ -11,15 +11,23 @@ const testCards = [
     rating: 5,
     heat: 5,
     tags: ["kids"]
+  },
+  {
+    user: "Dan",
+    avatar: "../../images/dibster.jpg",
+    added: "about 5 days ago",
+    picture: "../../images/StockSnap_G8QICMKLUV.jpg",
+    name: "Salmon",
+    rating: 5,
+    heat: 5,
+    tags: ["Fish"]
   }
 ];
 
 const WfCardList = props => (
   // <div>content</div>;
-  <div>
-    <WfCard card={testCards[0]} />
-    <WfCard card={testCards[0]} />
-  </div>
+
+  <div>{testCards.map(carditem => <WfCard card={carditem} />)}</div>
 );
 
 export default WfCardList;
