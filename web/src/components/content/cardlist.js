@@ -14,7 +14,8 @@ const testCards = [
   },
   {
     user: "Dan",
-    avatar: "../../images/dibster.jpg",
+    avatar:
+      "https://content.screencast.com/users/Dashenhurst/folders/Jing/media/3fa726cd-820a-4e9a-9e7a-e39935b3f593/00002395.png",
     added: "about 5 days ago",
     picture: "../../images/StockSnap_G8QICMKLUV.jpg",
     name: "Salmon",
