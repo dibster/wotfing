@@ -16,7 +16,14 @@ const WfCard = props => (
       subtitle={props.card.added}
       avatar={props.card.avatar}
     />
-    <CardMedia overlay={<CardTitle title={props.card.name} subtitle="Kids" />}>
+    <CardMedia
+      overlay={
+        <CardTitle
+          title={props.card.name}
+          subtitle={props.card.tags.toString()}
+        />
+      }
+    >
       <img src={props.card.picture} alt="" />
     </CardMedia>
     {/* <CardTitle title="Card title" subtitle="Card subtitle" />
