@@ -44,8 +44,6 @@ console.log(momentFromTimestamp());
 console.log(timestampFromDate());
 
 const WfCardList = props => (
-  // <div>content</div>;
-
   <div>{testCards.map(carditem => <WfCard card={carditem} />)}</div>
 );
 
