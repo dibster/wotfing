@@ -5,7 +5,7 @@ import "./App.css";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 // Wf Components
 import WfHeader from "./components/header/header";
-import WfCardList from "./components/content/cardlist";
+import WfCardList from "./components/contents/cardlist";
 import WfFooter from "./components/footer/footer";
 
 class App extends Component {
