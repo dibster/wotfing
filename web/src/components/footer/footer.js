@@ -1,4 +1,12 @@
 import React, { Component } from "react";
+// router
+import {
+  BrowserRouter as Redirect,
+  Router,
+  Route,
+  Link
+} from "react-router-dom";
+
 import FontIcon from "material-ui/FontIcon";
 import {
   BottomNavigation,
@@ -23,15 +31,29 @@ class WfFooter extends Component {
 
   select = index => this.setState({ selectedIndex: index });
 
+  handleOnClick = () => {
+    // some action...
+    console.log("Doing Redirect now");
+    this.setState({ redirect: true });
+  };
+
   render() {
+    if (this.state.redirect) {
+      console.log("In redirect");
+
+      return <Link to="/" />;
+    }
     return (
       <Paper zDepth={1}>
         <BottomNavigation selectedIndex={this.state.selectedIndex}>
           <BottomNavigationItem
             label="Contents"
             icon={nearbyIcon}
-            onClick={() => this.select(0)}
+            onClick={() => {
+              this.handleOnClick();
+            }}
           />
+
           <BottomNavigationItem
             label="Scan"
             icon={nearbyIcon}
