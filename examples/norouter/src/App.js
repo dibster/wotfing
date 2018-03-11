@@ -17,15 +17,15 @@ const Warning = text => {
   return <div> "Warning" + {text} </div>;
 };
 
-const Page = ({ text, state }) => {
-  console.log(state);
-  switch (state) {
+const Page = props => {
+  console.log(props);
+  switch (props.state) {
     case "info":
-      return Info(text);
+      return Info(props.text);
     case "warning":
-      return Warning(text);
+      return Warning(props.text);
     case "error":
-      return Error(text);
+      return Error(props.text);
     default:
       return null;
   }
