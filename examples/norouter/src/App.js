@@ -1,16 +1,14 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-// history
+// pages
+import Error from "./components/pages/error";
+
 const list = ["apple", "banana"];
 
 const Info = msg => {
   console.log("Info");
   return <h1> {msg} </h1>;
-};
-
-const Error = text => {
-  return <div>This is an error {text}</div>;
 };
 
 const Warning = text => {
@@ -19,7 +17,7 @@ const Warning = text => {
 
 const Page = props => {
   console.log(props);
-  switch (props.state) {
+  switch (props.page) {
     case "info":
       return Info(props.text);
     case "warning":
@@ -49,9 +47,9 @@ class App extends Component {
       <div>
         <h1>Start</h1>
         <List />
-        <Page text="fred" state="error" />
-        <Page text="fred" state="info" />
-        <Page text="fred" state="warning" />
+        <Page text="fred" page="error" />
+        <Page text="barney" page="info" />
+        <Page text="ginger" page="warning" />
       </div>
     );
   }
