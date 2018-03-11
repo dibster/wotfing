@@ -3,11 +3,6 @@ import logo from "./logo.svg";
 import "./App.css";
 // history
 const list = ["apple", "banana"];
-const ENUM = {
-  a: "1",
-  b: "2",
-  c: "3"
-};
 
 const Info = msg => {
   console.log("Info");
@@ -22,15 +17,15 @@ const Warning = text => {
   return <div> "Warning" + {text} </div>;
 };
 
-const Page = props => {
-  console.log(props);
-  switch (props.state) {
+const Page = ({ text, state }) => {
+  console.log(state);
+  switch (state) {
     case "info":
-      return Info(props.text);
+      return Info(text);
     case "warning":
-      return Warning(props.text);
+      return Warning(text);
     case "error":
-      return Error(props.text);
+      return Error(text);
     default:
       return null;
   }
