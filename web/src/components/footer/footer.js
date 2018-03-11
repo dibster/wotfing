@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 // router
-import {
-  BrowserRouter as Redirect,
-  Router,
-  Route,
-  Link
-} from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 import FontIcon from "material-ui/FontIcon";
 import {
@@ -34,14 +29,13 @@ class WfFooter extends Component {
   handleOnClick = () => {
     // some action...
     console.log("Doing Redirect now");
-    this.setState({ redirect: true });
+    //eslint-disable-next-line
+    //history.push("/");
   };
 
   render() {
     if (this.state.redirect) {
       console.log("In redirect");
-
-      return <Link to="/" />;
     }
     return (
       <Paper zDepth={1}>
@@ -50,7 +44,8 @@ class WfFooter extends Component {
             label="Contents"
             icon={nearbyIcon}
             onClick={() => {
-              this.handleOnClick();
+              //eslint-disable-next-line
+              props.history.push("/");
             }}
           />
 
@@ -70,4 +65,4 @@ class WfFooter extends Component {
   }
 }
 
-export default WfFooter;
+export default withRouter(WfFooter);
