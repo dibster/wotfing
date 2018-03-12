@@ -3,7 +3,8 @@ import logo from "./logo.svg";
 import "./App.css";
 // pages
 import Error from "./components/pages/error";
-
+import WarningButton from "./components/buttons/warning";
+/*global handleBottomNav*/
 const list = ["apple", "banana"];
 
 const Info = msg => {
@@ -29,27 +30,31 @@ const Page = props => {
   }
 };
 
-const List = () => {
-  if (!list) {
-    return null;
-  }
-
-  if (!list.length) {
-    return <p>Sorry, the list is empty.</p>;
-  } else {
-    return <div>{list.map(item => item)}</div>;
-  }
-};
-
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { isToggleOn: true, page: "error" };
+    this.showInfo = this.showInfo.bind(this);
+    const handleBottomNav = this.handleBottomNav.bind(this);
+    let page = "";
+  }
+
+  handleBottomNav(page) {
+    alert("We pass argument from Child to Parent: " + page);
+    this.setState({ page: "error" });
+  }
+
+  showInfo() {
+    this.setState({ page: "info" });
+  }
+
   render() {
+    let handleBottomNav = this.handleBottomNav;
     return (
       <div>
         <h1>Start</h1>
-        <List />
-        <Page text="fred" page="error" />
-        <Page text="barney" page="info" />
-        <Page text="ginger" page="warning" />
+        <Page text="fred" page={this.state.page} />
+        <WarningButton handleBottomNav={handleBottomNav.bind(this)} />
       </div>
     );
   }
