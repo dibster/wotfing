@@ -15,7 +15,7 @@ const Info = msg => {
 const Warning = text => {
   return <div> "Warning" + {text} </div>;
 };
-
+// page routing
 const Page = props => {
   console.log(props);
   switch (props.page) {
