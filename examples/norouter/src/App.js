@@ -9,7 +9,7 @@ const list = ["apple", "banana"];
 
 const Info = msg => {
   console.log("Info");
-  return <h1> {msg} </h1>;
+  return <div> I am displaying this page : {msg} </div>;
 };
 
 const Warning = text => {
@@ -39,9 +39,9 @@ class App extends Component {
     let page = "";
   }
 
-  handleBottomNav(page) {
-    alert("We pass argument from Child to Parent: " + page);
-    this.setState({ page: "error" });
+  handleBottomNav(pagestate) {
+    //alert("We pass argument from Child to Parent: " + pagestate);
+    this.setState({ page: pagestate });
   }
 
   showInfo() {

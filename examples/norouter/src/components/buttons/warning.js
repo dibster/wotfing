@@ -5,7 +5,15 @@ class WarningButton extends React.Component {
     var handleBottomNav = this.props.handleBottomNav;
     return (
       <div>
-        <button onClick={() => handleBottomNav("warning")}>Push me</button>
+        <div>
+          <button onClick={() => handleBottomNav("warning")}>Warning</button>
+        </div>
+        <div>
+          <button onClick={() => handleBottomNav("info")}>Info</button>
+        </div>
+        <div>
+          <button onClick={() => handleBottomNav("error")}>Error</button>
+        </div>
       </div>
     );
   }
