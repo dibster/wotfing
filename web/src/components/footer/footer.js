@@ -49,7 +49,7 @@ class WfFooter extends Component {
             onClick={() => handleBottomNav("checkCode")}
           />
           <BottomNavigationItem
-            label="Show"
+            label="Scan"
             icon={viewIcon}
             onClick={() => handleBottomNav("findItemForCode")}
           />

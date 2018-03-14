@@ -3,11 +3,14 @@ import "./App.css";
 
 // Material UI
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-// Wf Components
+// Header and Footer
 import WfHeader from "./components/header/header";
 import WfFooter from "./components/footer/footer";
-// List of COntainer Contents
+
+// List of Container (eg Freezer)Contents
 import WfCardList from "./components/contents/cardlist";
+// List of Container (eg Freezer)Contents
+import WfIdentifyItem from "./components/identify/identify";
 
 // State to control flow of App
 const PageRouter = props => {
@@ -16,13 +19,17 @@ const PageRouter = props => {
       return (
         <div>
           {/* <WfCardList /> */}
-          Cards
+          List
         </div>
       );
     case "checkCode":
       return <div>Scan QR Code</div>;
     case "findItemForCode":
-      return <div>Find Item For Code</div>;
+      return (
+        <div>
+          <WfIdentifyItem />
+        </div>
+      );
     default:
       return null;
   }
