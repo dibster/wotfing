@@ -8,19 +8,21 @@ import WfHeader from "./components/header/header";
 import WfFooter from "./components/footer/footer";
 // List of COntainer Contents
 import WfCardList from "./components/contents/cardlist";
+
 // State to control flow of App
-const MainPage = props => {
+const PageRouter = props => {
   switch (props.page) {
     case "contents":
       return (
         <div>
-          <WfCardList />
+          {/* <WfCardList /> */}
+          Cards
         </div>
       );
     case "checkCode":
       return <div>Scan QR Code</div>;
-    case "addToStorage":
-      return <div>add to Storage</div>;
+    case "findItemForCode":
+      return <div>Find Item For Code</div>;
     default:
       return null;
   }
@@ -34,22 +36,23 @@ class App extends Component {
     // handle bottom nac component
     const handleBottomNav = this.handleBottomNav.bind(this);
   }
-
+  // Handle Page State
   handleBottomNav(pagestate) {
-    this.setState({ page: pagestate });
+    this.setState({ currentPage: pagestate });
   }
 
   render() {
+    let handleBottomNav = this.handleBottomNav;
     return (
       <MuiThemeProvider>
         <div>
+          {/* Header */}
           <WfHeader />
           {/* Show content based on current page state */}
-          <MainPage page={this.state.currentPage} />
+          <PageRouter page={this.state.currentPage} />
           {/* Footer at bottom */}
           <div style={{ position: "fixed", bottom: "0", width: "100%" }}>
-            + <WfFooter />
-            +{" "}
+            <WfFooter handleBottomNav={handleBottomNav.bind(this)} />
           </div>
         </div>
       </MuiThemeProvider>

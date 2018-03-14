@@ -8,11 +8,17 @@ import {
 import Paper from "material-ui/Paper";
 import IconLocationOn from "material-ui/svg-icons/communication/location-on";
 import IconContents from "material-ui/svg-icons/device/widgets";
+import IconCamera from "material-ui/svg-icons/image/camera-alt";
+import IconView from "material-ui/svg-icons/action/search";
+
+// all icons here https://material.io/icons/#ic_widgets
 
 const recentsIcon = <FontIcon className="material-icons">widgets</FontIcon>;
 const favoritesIcon = <FontIcon className="material-icons">favorite</FontIcon>;
 const nearbyIcon = <IconLocationOn />;
 const contentsIcon = <IconContents />;
+const cameraIcon = <IconCamera />;
+const viewIcon = <IconView />;
 
 /**
  * A simple example of `BottomNavigation`, with three labels and icons
@@ -26,35 +32,26 @@ class WfFooter extends Component {
 
   select = index => this.setState({ selectedIndex: index });
 
-  handleOnClick = () => {
-    // some action...
-    console.log("Doing Redirect now");
-    //eslint-disable-next-line
-    //history.push("/");
-  };
-
   render() {
-    if (this.state.redirect) {
-      console.log("In redirect");
-    }
+    let handleBottomNav = this.props.handleBottomNav;
     return (
       <Paper zDepth={1}>
         <BottomNavigation selectedIndex={this.state.selectedIndex}>
           <BottomNavigationItem
-            label="Contents"
+            label="All"
             icon={contentsIcon}
-            onClick={() => {}}
+            onClick={() => handleBottomNav("contents")}
           />
 
           <BottomNavigationItem
-            label="Scan"
-            icon={recentsIcon}
-            onClick={() => this.select(1)}
+            label="New"
+            icon={cameraIcon}
+            onClick={() => handleBottomNav("checkCode")}
           />
           <BottomNavigationItem
-            label="Container"
-            icon={nearbyIcon}
-            onClick={() => this.select(2)}
+            label="Show"
+            icon={viewIcon}
+            onClick={() => handleBottomNav("findItemForCode")}
           />
         </BottomNavigation>
       </Paper>
