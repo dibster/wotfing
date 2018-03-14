@@ -7,10 +7,12 @@ import {
 } from "material-ui/BottomNavigation";
 import Paper from "material-ui/Paper";
 import IconLocationOn from "material-ui/svg-icons/communication/location-on";
+import IconContents from "material-ui/svg-icons/device/widgets";
 
-const recentsIcon = <FontIcon className="material-icons">restore</FontIcon>;
+const recentsIcon = <FontIcon className="material-icons">widgets</FontIcon>;
 const favoritesIcon = <FontIcon className="material-icons">favorite</FontIcon>;
 const nearbyIcon = <IconLocationOn />;
+const contentsIcon = <IconContents />;
 
 /**
  * A simple example of `BottomNavigation`, with three labels and icons
@@ -40,13 +42,13 @@ class WfFooter extends Component {
         <BottomNavigation selectedIndex={this.state.selectedIndex}>
           <BottomNavigationItem
             label="Contents"
-            icon={nearbyIcon}
+            icon={contentsIcon}
             onClick={() => {}}
           />
 
           <BottomNavigationItem
             label="Scan"
-            icon={nearbyIcon}
+            icon={recentsIcon}
             onClick={() => this.select(1)}
           />
           <BottomNavigationItem

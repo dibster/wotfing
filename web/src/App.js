@@ -44,8 +44,13 @@ class App extends Component {
       <MuiThemeProvider>
         <div>
           <WfHeader />
+          {/* Show content based on current page state */}
           <MainPage page={this.state.currentPage} />
-          <WfFooter />
+          {/* Footer at bottom */}
+          <div style={{ position: "fixed", bottom: "0", width: "100%" }}>
+            + <WfFooter />
+            +{" "}
+          </div>
         </div>
       </MuiThemeProvider>
     );
