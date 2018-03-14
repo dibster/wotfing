@@ -52,7 +52,7 @@ class App extends Component {
     let handleBottomNav = this.handleBottomNav;
     return (
       <div>
-        <h1>Start</h1>
+        <h1>Routing via Sub Component</h1>
         <Page text="fred" page={this.state.page} />
         <WarningButton handleBottomNav={handleBottomNav.bind(this)} />
       </div>

@@ -1,35 +1,51 @@
 import React, { Component } from "react";
-// router
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-// styles
 import "./App.css";
 
 // Material UI
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 // Wf Components
 import WfHeader from "./components/header/header";
-import WfCardList from "./components/contents/cardlist";
 import WfFooter from "./components/footer/footer";
-// admin test
-const Admin = () => <h1>Admin</h1>;
+// List of COntainer Contents
+import WfCardList from "./components/contents/cardlist";
+// State to control flow of App
+const MainPage = props => {
+  switch (props.page) {
+    case "contents":
+      return (
+        <div>
+          <WfCardList />
+        </div>
+      );
+    case "checkCode":
+      return <div>Scan QR Code</div>;
+    case "addToStorage":
+      return <div>add to Storage</div>;
+    default:
+      return null;
+  }
+};
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    // initil state
+    this.state = { currentPage: "contents" };
+    // handle bottom nac component
+    const handleBottomNav = this.handleBottomNav.bind(this);
+  }
+
+  handleBottomNav(pagestate) {
+    this.setState({ page: pagestate });
+  }
+
   render() {
     return (
       <MuiThemeProvider>
         <div>
-          <Router>
-            <div>
-              <WfHeader />
-              <div>
-                <Route exact path="/" component={WfCardList} />
-                <Route path="/admin" component={Admin} />
-              </div>
-              <div style={{ position: "fixed", bottom: "0", width: "100%" }}>
-                <WfFooter />
-              </div>
-            </div>
-          </Router>
+          <WfHeader />
+          <MainPage page={this.state.currentPage} />
+          <WfFooter />
         </div>
       </MuiThemeProvider>
     );

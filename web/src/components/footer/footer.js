@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-// router
-import { withRouter } from "react-router-dom";
 
 import FontIcon from "material-ui/FontIcon";
 import {
@@ -43,10 +41,7 @@ class WfFooter extends Component {
           <BottomNavigationItem
             label="Contents"
             icon={nearbyIcon}
-            onClick={() => {
-              //eslint-disable-next-line
-              props.history.push("/");
-            }}
+            onClick={() => {}}
           />
 
           <BottomNavigationItem
@@ -65,4 +60,4 @@ class WfFooter extends Component {
   }
 }
 
-export default withRouter(WfFooter);
+export default WfFooter;

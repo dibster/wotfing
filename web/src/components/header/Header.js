@@ -23,10 +23,10 @@ const styles = {
  * This example uses an [IconButton](/#/components/icon-button) on the left, has a clickable `title`
  * through the `onTouchTap` property, and a [FlatButton](/#/components/flat-button) on the right.
  */
-const WfHeader = () => (
+const WfAppBar = () => (
   <div>
     <AppBar
-      title={<span style={styles.title}>Wotfing - Freezer</span>}
+      title={<span style={styles.title}>Wotfing</span>}
       onTitleTouchTap={handleTouchTap}
       onRightIconButtonTouchTap={handleLoginTap}
       iconElementLeft={
@@ -40,4 +40,4 @@ const WfHeader = () => (
   </div>
 );
 
-export default WfHeader;
+export default WfAppBar;
