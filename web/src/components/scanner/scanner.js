@@ -6,18 +6,14 @@ class WfScanner extends Component {
     super(props);
     this.state = {
       delay: 300,
-      result: "Scanning QR Code"
+      message: "Point at QR Code"
     };
     this.handleScan = this.handleScan.bind(this);
   }
-
+  // when QR Code detected call parent function to handle it
   handleScan(data) {
     if (data) {
-      console.log(this.props);
       this.props.handleQrCode(data);
-      this.setState({
-        result: data
-      });
     }
   }
 
@@ -34,7 +30,7 @@ class WfScanner extends Component {
           onScan={this.handleScan}
           style={{ width: "100%" }}
         />
-        <p>{this.state.result}</p>
+        <p>{this.state.message}</p>
       </div>
     );
   }
