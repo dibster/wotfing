@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import Paper from "material-ui/Paper";
 // Scanner
 import WfScanner from "../scanner/scanner";
+// Scanner Results
+import WfItemSummary from "../itemsummary/itemsummary";
+// db
+import { thisItem } from "../db/jsondb";
 
 const style = {
   height: 400,
@@ -16,7 +20,7 @@ class WfIdentifyItem extends Component {
     super(props);
     this.state = {
       delay: 300,
-      result: "Scanning QR Code"
+      message: "Scan QR Code"
     };
     const handleQrCode = this.handleQrCode.bind(this);
   }
@@ -24,7 +28,8 @@ class WfIdentifyItem extends Component {
   handleQrCode(data) {
     console.log("Running parent " + data);
     if (data) {
-      return <div>QR Code Scanned</div>;
+      // get Qr Code Value
+      this.setState({ message: thisItem(data).name });
     }
   }
   render() {
@@ -35,6 +40,8 @@ class WfIdentifyItem extends Component {
           {/* <div>QR Scanner Goes Here</div> */}
           <div>
             <WfScanner handleQrCode={handleQrCode.bind(this)} />
+            <p>{this.state.message}</p>
+            {/* <WfItemSummary /> */}
           </div>
         </Paper>
       </div>

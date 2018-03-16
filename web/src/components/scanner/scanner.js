@@ -5,8 +5,8 @@ class WfScanner extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      delay: 300,
-      message: "Point at QR Code"
+      delay: 300
+      // message: "Point at QR Code"
     };
     this.handleScan = this.handleScan.bind(this);
   }
@@ -30,7 +30,6 @@ class WfScanner extends Component {
           onScan={this.handleScan}
           style={{ width: "100%" }}
         />
-        <p>{this.state.message}</p>
       </div>
     );
   }

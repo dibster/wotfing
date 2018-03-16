@@ -18,8 +18,8 @@ const PageRouter = props => {
     case "contents":
       return (
         <div>
-          <WfCardList />
-          {/* List */}
+          {/* <WfCardList /> */}
+          List
         </div>
       );
     case "checkCode":
