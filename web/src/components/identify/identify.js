@@ -3,7 +3,7 @@ import Paper from "material-ui/Paper";
 // Scanner
 import WfScanner from "../scanner/scanner";
 // Scanner Results
-import WfItemSummary from "../itemsummary/itemsummary";
+import WfItemSummary from "../itemSummary/itemSummary";
 // db
 import { thisItem } from "../db/jsondb";
 

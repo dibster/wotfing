@@ -11,6 +11,9 @@ import WfFooter from "./components/footer/footer";
 import WfCardList from "./components/contents/cardlist";
 // List of Container (eg Freezer)Contents
 import WfIdentifyItem from "./components/identify/identify";
+// Form to Get the datails of the item
+
+import WfNewItem from "./components/newItem/itemForm"
 
 // State to control flow of App
 const PageRouter = props => {
@@ -18,12 +21,15 @@ const PageRouter = props => {
     case "contents":
       return (
         <div>
-          <WfCardList />
-          {/* List */}
+          {/* <WfCardList /> */}
+          List of Cards
         </div>
       );
     case "checkCode":
-      return <div>Scan QR Code</div>;
+      return <div>
+        <WfNewItem />
+        {/* Descibe Item */}
+      </div>;
     case "findItemForCode":
       return (
         <div>
