@@ -5,8 +5,6 @@ import "./App.css";
 import Error from "./components/pages/error";
 import WarningButton from "./components/buttons/warning";
 /*global handleBottomNav*/
-const list = ["apple", "banana"];
-
 const Info = msg => {
   console.log("Info");
   return <div> I am displaying this page : {msg} </div>;
