@@ -4,16 +4,22 @@ import AutoComplete from 'material-ui/AutoComplete';
 import { allTitles } from '../db/jsondb'
 const titles = allTitles("freezer");
 
-const WfItemForm = () => (
+const nameSelected = (parm) => {
+  console.log('Selected Name');
+}
+
+const WfItemName = () => (
   <div>
-    <br />
     <AutoComplete
-      floatingLabelText="What is it ?"
+      floatingLabelText="Name"
       filter={AutoComplete.fuzzyFilter}
       dataSource={titles}
       maxSearchResults={5}
+      onNewRequest={e => {
+        nameSelected(e)
+      }}
     />
   </div>
 );
 
-export default WfItemForm;
+export default WfItemName;

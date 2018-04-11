@@ -9,11 +9,10 @@ import WfFooter from "./components/footer/footer";
 
 // List of Container (eg Freezer)Contents
 import WfCardList from "./components/contents/cardlist";
-// List of Container (eg Freezer)Contents
+// Scan the Code
 import WfIdentifyItem from "./components/identify/identify";
 // Form to Get the datails of the item
-
-import WfNewItem from "./components/newItem/itemForm"
+import WfNewItem from "./components/newItem/newItem"
 
 // State to control flow of App
 const PageRouter = props => {

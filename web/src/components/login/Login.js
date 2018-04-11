@@ -2,12 +2,6 @@ import React from "react";
 import Dialog from "material-ui/Dialog";
 import FlatButton from "material-ui/FlatButton";
 import TextField from "material-ui/TextField";
-import EVT from "evrythng";
-
-const APP_API_KEY =
-	"6aFFRETP9bbmE1osZRgYTHjQap7Va3CWypm10ugfwiWps9lhLq12m1prXghoFjZIDFiRXEDhTycHNFuK";
-const app = new EVT.App(APP_API_KEY);
-console.log("app : " + JSON.stringify(app));
 
 /**
  * Dialog with action buttons. The actions are passed in as an array of React objects,
@@ -59,25 +53,7 @@ export default class Login extends React.Component {
 		if (this.state.registrationName) {
 			console.log("Create New User");
 			console.log("this.state : " + JSON.stringify(this.state));
-			app
-				.appUser()
-				.create({
-					email: this.state.emailaddress,
-					password: this.state.password, // don't put this one in the code :)
-					firstName: this.state.name,
-					lastName: "wotfing"
-				})
-				.then(appUser => {
-					console.log("Created user: ", appUser);
-					localStorage.setItem("wotfingUserName", this.state.name);
-					// validate app user
-					return appUser.validate();
-				})
-				.then(loggedInUser => {
-					// validated user and his api key
-					this.setState({ userApiKey: loggedInUser.evrythngApiKey });
-					localStorage.setItem("wotfingUserKey", loggedInUser.evrythngApiKey);
-				});
+
 		}
 		this.setState({ open: true });
 		this.setState({ registrationName: true });

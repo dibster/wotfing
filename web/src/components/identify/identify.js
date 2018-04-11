@@ -8,8 +8,8 @@ import WfItemSummary from "../itemSummary/itemSummary";
 import { thisItem } from "../db/jsondb";
 
 const style = {
-  height: 400,
-  width: window.innerWidth - 50,
+  height: window.innerHeight - 350,
+  width: window.innerWidth - 100,
   margin: 20,
   textAlign: "center",
   display: "inline-block"
@@ -20,7 +20,7 @@ class WfIdentifyItem extends Component {
     super(props);
     this.state = {
       delay: 300,
-      message: "Scan QR Code"
+      message: "Point at Label"
     };
     const handleQrCode = this.handleQrCode.bind(this);
   }
