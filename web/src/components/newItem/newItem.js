@@ -6,8 +6,10 @@ import {
 } from 'material-ui/Stepper';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
-
+// name of item
 import WfItemName from './itemName';
+// photo of item
+import WfPhoto from '../photo/imageGrid'
 // Scan the Code
 import WfIdentifyItem from "../identify/identify";
 
@@ -48,7 +50,11 @@ class WfNewItem extends React.Component {
             <br />
           </div>);
       case 1:
-        return 'Picture';
+        return (
+          <div>
+            <WfPhoto />
+            <br />
+          </div>);
       case 2:
         return (
           <div>

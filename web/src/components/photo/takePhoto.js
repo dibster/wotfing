@@ -5,7 +5,7 @@ import ActionAndroid from 'material-ui/svg-icons/action/camera-enhance';
 import { fullWhite } from 'material-ui/styles/colors';
 
 const style = {
-  margin: 10,
+  margin: 0,
 };
 
 const FlatButtonExampleIcon = () => (
