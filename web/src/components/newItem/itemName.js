@@ -9,17 +9,15 @@ const nameSelected = (parm) => {
 }
 
 const WfItemName = () => (
-  <div>
-    <AutoComplete
-      floatingLabelText="Name"
-      filter={AutoComplete.fuzzyFilter}
-      dataSource={titles}
-      maxSearchResults={5}
-      onNewRequest={e => {
-        nameSelected(e)
-      }}
-    />
-  </div>
+  <AutoComplete
+    floatingLabelText="Name"
+    filter={AutoComplete.fuzzyFilter}
+    dataSource={titles}
+    maxSearchResults={5}
+    onNewRequest={e => {
+      nameSelected(e)
+    }}
+  />
 );
 
 export default WfItemName;

@@ -13,7 +13,7 @@ class WfScanner extends Component {
   // when QR Code detected call parent function to handle it
   handleScan(data) {
     if (data) {
-      this.props.handleQrCode(data);
+      alert(data)
     }
   }
 

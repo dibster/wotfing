@@ -4,6 +4,9 @@ import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import FlatButtonExampleIcon from './takePhoto'
+// db
+import { allImages } from '../db/jsondb'
+const tilesData = allImages("chilli");
 
 const styles = {
   root: {
@@ -12,47 +15,12 @@ const styles = {
     justifyContent: 'space-around',
   },
   gridList: {
-    width: 500,
-    height: 450,
+    width: 200,
+    height: 200,
     overflowY: 'auto',
   },
 };
 
-const tilesData = [
-  {
-    img: 'images/chilli.jpg'
-  },
-  {
-    img: 'images/chilli.jpg',
-    author: 'jill111',
-  },
-  {
-    img: 'images/chilli.jpg',
-    title: ' ',
-    author: ' ',
-  },
-  {
-    img: 'images/chilli.jpg',
-    title: 'Breakfast',
-    author: 'jill111',
-  },
-  {
-    img: 'images/chilli.jpg',
-    title: 'Breakfast',
-    author: 'jill111',
-  },
-  {
-    img: 'images/chilli.jpg',
-    title: 'Breakfast',
-    author: 'jill111',
-  },
-  {
-    img: 'images/chilli.jpg',
-    title: 'Breakfast',
-    author: 'jill111',
-  }
-
-];
 
 /**
  * A simple example of a scrollable `GridList` containing a [Subheader](/#/components/subheader).
@@ -60,7 +28,7 @@ const tilesData = [
 const WfImageGrid = () => (
   <div style={styles.root}>
     <GridList
-      cellHeight={180}
+      cellHeight={90}
       style={styles.gridList}
     >
       <Subheader>
@@ -69,10 +37,10 @@ const WfImageGrid = () => (
       </Subheader>
       {tilesData.map((tile) => (
         <GridTile onClick={(e) => {
-          alert('Chose Image ' + tile.img)
+          alert('Chose Image ' + tile.image)
           console.log(tile);
         }}>
-          <img src={tile.img} />
+          <img src={tile.image} />
         </GridTile>
       ))}
     </GridList>

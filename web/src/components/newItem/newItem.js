@@ -45,22 +45,13 @@ class WfNewItem extends React.Component {
     switch (stepIndex) {
       case 0:
         return (
-          <div>
-            <WfItemName />
-            <br />
-          </div>);
+          <WfItemName />)
       case 1:
         return (
-          <div>
-            <WfPhoto />
-            <br />
-          </div>);
+          <WfPhoto />)
       case 2:
         return (
-          <div>
-            <WfIdentifyItem />
-            <br />
-          </div>);
+          <WfIdentifyItem />)
       default:
         return 'You\'re a long way from home sonny jim!';
     }
@@ -69,6 +60,8 @@ class WfNewItem extends React.Component {
   render() {
     const { finished, stepIndex } = this.state;
     const contentStyle = { margin: '0 16px' };
+    console.log('myState : ' + JSON.stringify(window.myState, null, 2));
+
 
     return (
       <div style={{ width: '100%', maxWidth: 700, margin: 'auto' }}>
@@ -98,7 +91,7 @@ class WfNewItem extends React.Component {
             </p>
           ) : (
               <div>
-                <p>{this.getStepContent(stepIndex)}</p>
+                {this.getStepContent(stepIndex)}
                 <div style={{ marginTop: 12 }}>
                   <FlatButton
                     label="Back"

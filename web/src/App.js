@@ -14,6 +14,9 @@ import WfIdentifyItem from "./components/identify/identify";
 // Form to Get the datails of the item
 import WfNewItem from "./components/newItem/newItem"
 
+window.myState = {};
+window.myState.currentPage = 'App'
+
 // State to control flow of App
 const PageRouter = props => {
   switch (props.page) {
