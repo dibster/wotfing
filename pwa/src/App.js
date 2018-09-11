@@ -1,6 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
+// Material UI
+import "typeface-roboto";
+
 // All components
 import Home from "./components/Home";
 import Login from "./components/Login";
