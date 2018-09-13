@@ -4,6 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import red from "@material-ui/core/colors/red";
 import blue from "@material-ui/core/colors/blue";
 import SvgIcon from "@material-ui/core/SvgIcon";
+import Icon from "@material-ui/core/Icon";
 
 const styles = theme => ({
   root: {
@@ -24,9 +25,12 @@ const styles = theme => ({
 
 function HomeIcon(props) {
   return (
-    <SvgIcon {...props}>
-      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-    </SvgIcon>
+    <div>
+      <SvgIcon color="primary">
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+      </SvgIcon>
+      <Icon color="primary">star</Icon>
+    </div>
   );
 }
 class Register extends React.Component {
