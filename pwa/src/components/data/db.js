@@ -34,4 +34,4 @@ const allActiveIds = filter => {
   ];
 };
 
-export { getById, allActiveIds };
+export { getById, addNewId, allActiveIds };

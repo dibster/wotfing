@@ -14,6 +14,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import { withRouter } from "react-router-dom";
 
+const Title = "Fings";
+
 const styles = {
   root: {
     flexGrow: 1
@@ -29,7 +31,7 @@ const styles = {
 
 class MenuAppBar extends React.Component {
   state = {
-    auth: true,
+    auth: false,
     anchorEl: null
   };
 
@@ -46,9 +48,13 @@ class MenuAppBar extends React.Component {
   };
 
   handleProfile = history => {
-    console.log("in profile :" + JSON.stringify(this.props.history));
-    history = this.props.history;
-    history.push("/scan");
+    this.props.history.push("/profile");
+    this.setState({ anchorEl: null });
+  };
+
+  handleLogout = history => {
+    this.setState({ auth: false });
+    this.props.history.push("/login");
     this.setState({ anchorEl: null });
   };
 
@@ -85,7 +91,7 @@ class MenuAppBar extends React.Component {
               color="inherit"
               className={classes.grow}
             >
-              Assets
+              {Title}
             </Typography>
             {auth && (
               <div>
@@ -112,7 +118,7 @@ class MenuAppBar extends React.Component {
                   onClose={this.handleClose}
                 >
                   <MenuItem onClick={this.handleProfile}>Profile</MenuItem>
-                  <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                  <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
                 </Menu>
               </div>
             )}

@@ -15,7 +15,9 @@ import Picture from "./components/Picture";
 import Use from "./components/Use";
 import Scan from "./components/Scan";
 import Share from "./components/Share";
+import Profile from "./components/Profile";
 import MenuAppBar from "./components/Header";
+import BottomNav from "./components/BottomNav";
 
 const BasicExample = () => (
   <div>
@@ -67,8 +69,10 @@ const BasicExample = () => (
         <Route path="/use" component={Use} />
         <Route path="/share" component={Share} />
         <Route path="/scan" component={Scan} />
+        <Route path="/profile" component={Profile} />
       </div>
     </Router>
+    {/* <BottomNav /> */}
   </div>
 );
 export default BasicExample;
