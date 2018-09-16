@@ -56,14 +56,13 @@ class ItemReviewCard extends React.Component {
 
   render() {
     const { classes, item } = this.props;
-    console.log("name " + item);
 
     return (
       <Card className={classes.card}>
         <CardHeader
           avatar={
             <Avatar aria-label="Recipe" className={classes.avatar}>
-              R
+              B
             </Avatar>
           }
           action={

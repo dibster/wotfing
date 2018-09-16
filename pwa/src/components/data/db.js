@@ -21,16 +21,16 @@ const allActiveIds = filter => {
   return [
     {
       id: 123456,
-      name: "bolognese",
+      name: "spag bog",
       description: "made with chillis",
       pic: "pic location somewhere on web",
       added: "2018-09-06T17:54:08.075Z"
     },
     {
       id: 789011,
-      name: "RUBY",
+      name: "Chicken Curry",
       pic: "pic location somewhere on web",
-      description: "hot",
+      description: "mild, kids, 2 portions",
       added: "2018-09-06T17:54:08.075Z"
     }
   ];

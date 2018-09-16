@@ -13,6 +13,7 @@ import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import { withRouter } from "react-router-dom";
+import Burger from "./Burger";
 
 const Title = "Fings";
 
@@ -40,6 +41,7 @@ class MenuAppBar extends React.Component {
   };
 
   handleMenu = event => {
+    console.log(event);
     this.setState({ anchorEl: event.currentTarget });
   };
 
@@ -49,6 +51,16 @@ class MenuAppBar extends React.Component {
 
   handleProfile = history => {
     this.props.history.push("/profile");
+    this.setState({ anchorEl: null });
+  };
+
+  handleHome = history => {
+    this.props.history.push("/");
+    this.setState({ anchorEl: null });
+  };
+
+  handleScan = history => {
+    this.props.history.push("/scan");
     this.setState({ anchorEl: null });
   };
 
@@ -79,13 +91,7 @@ class MenuAppBar extends React.Component {
         </FormGroup>
         <AppBar position="static">
           <Toolbar>
-            <IconButton
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="Menu"
-            >
-              <MenuIcon />
-            </IconButton>
+            <Burger />
             <Typography
               variant="title"
               color="inherit"

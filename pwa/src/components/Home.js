@@ -16,7 +16,12 @@ class Home extends React.Component {
         {/* <h1>Home : All Ids I have </h1>
         <div>{this.allIds()}</div> */}
         {this.allIds().map(item => {
-          return <ItemReviewCard item={item} key={item.id} />;
+          return (
+            <div key={item.id}>
+              <ItemReviewCard item={item} />
+              <br />
+            </div>
+          );
         })}
       </div>
     );
