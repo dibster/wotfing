@@ -22,6 +22,7 @@ const allActiveIds = filter => {
     {
       id: 123456,
       name: "bolognese",
+      description: "made with chillis",
       pic: "pic location somewhere on web",
       added: "2018-09-06T17:54:08.075Z"
     },
@@ -29,6 +30,7 @@ const allActiveIds = filter => {
       id: 789011,
       name: "RUBY",
       pic: "pic location somewhere on web",
+      description: "hot",
       added: "2018-09-06T17:54:08.075Z"
     }
   ];
